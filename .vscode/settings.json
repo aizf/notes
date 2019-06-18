@@ -1,0 +1,20 @@
+{
+    "sqltools.connections": [
+        {
+            "connectionTimeout": 30,
+            "database": "mysql",
+            "dialect": "MySQL",
+            "name": "localhost",
+            "password": "123456",
+            "port": 3306,
+            "server": "localhost",
+            "username": "root"
+        },
+        {
+            "database": "D:\\data\\sequence_pairs.db",
+            "dialect": "SQLite",
+            "name": "sp"
+        }
+    ],
+    "python.linting.enabled": false
+}

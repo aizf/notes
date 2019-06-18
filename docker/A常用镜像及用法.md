@@ -1,0 +1,76 @@
+#
+
+## 停止并删除
+
+`docker rm $(docker stop mysql)`
+
+## nginx
+
+`docker run --name index -p 443:80 -v $(realpath ~/index):/usr/share/nginx/html:ro -d nginx:stable-alpine`
+
+## tensorflow
+
+### bash
+
+```bash
+# cpu
+docker run -it --rm -v $(realpath bert):/srv -p 8888:8888 tensorflow/tensorflow:1.13.1-py3-jupyter bash
+# gpu
+docker run --runtime=nvidia -it --rm -v $(realpath bert):/notebooks -p 8888:8888 tensorflow/tensorflow:1.13.1-gpu-py3-jupyter bash
+```
+
+### 直接运行python
+
+```bash
+# cpu
+docker run --rm tensorflow/tensorflow:1.13.1-py3-jupyter \
+       python -c "import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"
+
+# gpu
+docker run --runtime=nvidia --rm tensorflow/tensorflow:1.13.1-py3-jupyter \
+       python -c "import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"
+```
+
+## gpu相关
+
+查看驱动及cuda
+
+`nvidia-smi`
+
+检查 GPU 是否可用
+
+`lspci | grep -i nvidia`
+
+## mysql
+
+`docker run --name mysql -p 3306:3306 -v $(realpath ~/etc/mysql/datadir):/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:5.7`
+
+### Where to Store Data
+
+`-v $(realpath ~/etc/mysql/datadir):/var/lib/mysql`
+
+### Using a custom MySQL configuration file
+
+`docker run --name mysql -v $(realpath ~/etc/mysql/conf.d):/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:5.7`
+
+### Creating database dumps
+
+`docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' > /some/path/on/your/host/all-databases.sql`
+
+### Restoring data from dump files
+
+`docker exec -i some-mysql sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < /some/path/on/your/host/all-databases.sql`
+
+## redis
+
+`docker run --name ss-redis -d redis:alpine redis-server --appendonly yes`
+
+`-p 6379:6379 \`
+
+```bash
+docker run -d --name ss-redis \
+    -v ~/etc/redis/redis.conf:/usr/local/etc/redis/redis.conf \
+    --network=host \
+    redis:alpine \
+    redis-server /usr/local/etc/redis/redis.conf
+```
