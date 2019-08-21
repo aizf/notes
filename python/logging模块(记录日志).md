@@ -3,7 +3,8 @@ python的logging模块提供了标准的日志接口，可以通过它存储各�
 ![avatar](.\res\100864.png)
 
 默认情况下只显示了大于等于WARNING级别的日志。
-```
+
+```py
 >>> import logging
 >>> logging.debug('test debug')
 >>> logging.info('test info')
