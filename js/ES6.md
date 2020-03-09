@@ -403,9 +403,11 @@ let arr=[...map.keys()];    // [1,2,3]
 
 ### 8.2 Array.from()
 
-将两类对象转化为数组：类似数组对象和iterable对象
+将两类对象转化为数组：**类似数组对象**和**iterable对象**
 
 类数组对象，**本质特征是有length属性**
+
+常见应用：把arguments转换成一个真正的数组
 
 ```js
 let arrayLike={
@@ -601,4 +603,124 @@ z // {a:3,b:4}
 ```js
 var a={b:{c:1}};
 const foo=a?.b?.c || 'default';
+```
+
+## 10 Symbol
+
+### 10.1
+
+ES6 引入了一种新的原始数据类型Symbol，表示独一无二的值
+
+它是 JavaScript 语言的第七种数据类型，前六种是：undefined、null、布尔值（Boolean）、字符串（String）、数值（Number）、对象（Object）。
+
+```js
+let s = Symbol();
+
+typeof s
+// "symbol"
+```
+
+由于 Symbol 值不是对象，所以不能添加属性。基本上，它是一种类似于字符串的数据类型。
+
+```js
+let s1 = Symbol('foo');
+let s2 = Symbol('bar');
+
+s1 // Symbol(foo)
+s2 // Symbol(bar)
+
+s1.toString() // "Symbol(foo)"
+s2.toString() // "Symbol(bar)"
+```
+
+如果 Symbol 的参数是一个对象，就会调用该对象的toString方法，将其转为字符串，然后才生成一个 Symbol 值。
+
+```js
+const obj = {
+  toString() {
+    return 'abc';
+  }
+};
+const obj1 = {
+    a:1
+};
+const sym = Symbol(obj);
+sym // Symbol(abc)
+
+const sym1 = Symbol(ob1j);
+sym1 // Symbol([object Object])
+```
+
+### 10.2 description
+
+读取这个描述需要将 Symbol 显式转为字符串，即下面的写法
+
+```js
+const sym = Symbol('foo');
+
+String(sym) // "Symbol(foo)"
+sym.toString() // "Symbol(foo)"
+```
+
+ES2019 提供了一个实例属性description，直接返回 Symbol 的描述。
+
+### 10.3 作为属性名的 Symbol
+
+防止某一个键被不小心改写或覆盖
+
+```js
+let mySymbol = Symbol();
+
+// 第一种写法
+let a = {};
+a[mySymbol] = 'Hello!';
+
+// 第二种写法
+let a = {
+  [mySymbol]: 'Hello!'
+};
+
+// 第三种写法
+let a = {};
+Object.defineProperty(a, mySymbol, { value: 'Hello!' });
+
+// 以上写法都得到同样结果
+a[mySymbol] // "Hello!"
+```
+
+### 10.4 属性名的遍历
+
+Symbol 作为属性名，遍历对象的时候，该属性不会出现在for...in、for...of循环中，**也不会被Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()返回**。
+
+但是，它也不是私有属性，有一个Object.**getOwnPropertySymbols()**方法，可以获取**指定对象的所有 Symbol 属性名**。该方法返回一个数组，成员是当前对象的所有用作属性名的 Symbol 值。
+
+### 10.5 Symbol.for()，Symbol.keyFor()
+
+有时，我们希望重新使用同一个 Symbol 值，`Symbol.for()`方法可以做到这一点。它接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 Symbol 值。如果有，就返回这个 Symbol 值，**否则就新建**一个以该字符串为名称的 Symbol 值，并将其注册到全局
+
+Symbol.for()与Symbol()这两种写法，都会生成新的 Symbol。它们的区别是，**前者**会被**登记在全局环境**中供搜索，后者不会。
+
+但是调用Symbol("cat")30 次，会返回 30 个**不同的** Symbol 值。
+
+Symbol.keyFor()方法返回一个**已登记**的 Symbol 类型值的key。
+
+Symbol.for()的这个全局登记特性，**可以用在不同的 iframe 或 service worker 中取到同一个值**。
+
+### 10.6 使用Symbol定义类的私有属性/方法
+
+```js
+const PASSWORD = Symbol()
+
+class Login {
+  constructor(username, password) {
+    this.username = username
+    this[PASSWORD] = password
+  }
+
+  checkPassword(pwd) {
+      return this[PASSWORD] === pwd
+  }
+}
+
+export default Login
 ```
