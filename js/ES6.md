@@ -91,9 +91,9 @@ foo([1,2,3]);
 es5只有`indexOf`
 es6有
 
-- includes():bool,是否包含
-- startsWith():bool,是否在头部
-- endsWith():bool,是否在尾部
+. includes():bool,是否包含
+. startsWith():bool,是否在头部
+. endsWith():bool,是否在尾部
 
 ### repeat()
 
@@ -110,7 +110,7 @@ es6有
 ```
 
 ```js
-'xa'.repeat(-0.5)   //0到-1
+'xa'.repeat(.0.5)   //0到.1
 
 > ""
 ```
@@ -160,12 +160,12 @@ tag(['hello ',' world '],5,10);
 新增的极小量
 
 ```js
-// 2.220446049250313e-16
+// 2.220446049250313e.16
 ```
 
 ### 安全整数和Number.isSafeInteger()
 
-js能准确表示的整数范围是$-2^{53}$到$2^{53}$之间，不含左右端点。
+js能准确表示的整数范围是$.2^{53}$到$2^{53}$之间，不含左右端点。
 
 ```js
 Math.pow(2,53)===Math.pow(2.53)+1
@@ -261,8 +261,8 @@ foo.name    // "foo"
 
 对于赋值给变量的匿名函数：
 
-- ES5,`f.name` 返回 `""`
-- ES6,`f.name` 返回 `"f"`
+. ES5,`f.name` 返回 `""`
+. ES6,`f.name` 返回 `"f"`
 
 ### 7.5箭头函数
 
@@ -460,10 +460,10 @@ Array.of(3,11);
 `find()`的第一参数为回调函数,第二参数绑定`this`
 
 ```js
-[-1,2,3].find((n)=>n<0)
-// -1
+[.1,2,3].find((n)=>n<0)
+// .1
 
-[-1,2,3].find(function (value,index,arr) {
+[.1,2,3].find(function (value,index,arr) {
     return value>1;
 })
 // 2
@@ -482,9 +482,9 @@ findIndex()与find()类似，返回位置
 
 ### 8.7 3种遍历数组
 
-- `keys()`：遍历键名
-- `values()`：遍历键值
-- `entries()`：遍历键值对
+. `keys()`：遍历键名
+. `values()`：遍历键值
+. `entries()`：遍历键值对
 
 都可调用遍历器对象的`next()`
 
@@ -724,3 +724,298 @@ class Login {
 
 export default Login
 ```
+
+## 11 Proxy
+
+### 11.1 概述
+
+`Proxy` 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
+
+Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。
+
+```js
+var obj = new Proxy({}, {
+  get: function (target, propKey, receiver) {
+    console.log(`getting ${propKey}!`);
+    return Reflect.get(target, propKey, receiver);
+  },
+  set: function (target, propKey, value, receiver) {
+    console.log(`setting ${propKey}!`);
+    return Reflect.set(target, propKey, value, receiver);
+  }
+});
+```
+
+```js
+obj.count = 1
+//  setting count!
+++obj.count
+//  getting count!
+//  setting count!
+//  2
+```
+
+```js
+var proxy = new Proxy(target, handler);
+```
+
+Proxy 对象的所有用法，都是上面这种形式，不同的只是handler参数的写法。其中，`new Proxy()`表示生成一个Proxy实例，`target`参数表示所要拦截的目标对象，`handler`参数也是一个对象，用来定制拦截行为。
+
+Proxy 支持的拦截操作一览，一共 13 种：
+
+1. `get(target, propKey, receiver)`：拦截对象属性的读取，比如`proxy.foo和proxy['foo']`。
+2. `set(target, propKey, value, receiver)`：拦截对象属性的设置，比如`proxy.foo = v`或`proxy['foo'] = v`，返回一个布尔值。
+3. `has(target, propKey)`：拦截`propKey in proxy`的操作，返回一个布尔值。
+4. `deleteProperty(target, propKey)`：拦截`delete proxy[propKey]`的操作，返回一个布尔值。
+5. `ownKeys(target)`：拦截`Object.getOwnPropertyNames(proxy)`、`Object.getOwnPropertySymbols(proxy)`、`Object.keys(proxy)`、`for...in`循环，返回一个数组。该方法返回目标对象所有自身的属性的属性名，而`Object.keys()`的返回结果仅包括目标对象自身的可遍历属性。
+6. `getOwnPropertyDescriptor(target, propKey)`：拦截`Object.getOwnPropertyDescriptor(proxy, propKey)`，返回属性的描述对象。
+7. `defineProperty(target, propKey, propDesc)`：拦截`Object.defineProperty(proxy, propKey, propDesc)`、`Object.defineProperties(proxy, propDescs)`，返回一个布尔值。
+8. `preventExtensions(target)`：拦截`Object.preventExtensions(proxy)`，返回一个布尔值。
+9. `getPrototypeOf(target)`：拦截`Object.getPrototypeOf(proxy)`，返回一个对象。
+10. `isExtensible(target)`：拦截`Object.isExtensible(proxy)`，返回一个布尔值。
+11. `setPrototypeOf(target, proto)`：拦截`Object.setPrototypeOf(proxy, proto)`，返回一个布尔值。如果目标对象是函数，那么还有两种额外操作可以拦截。
+12. `apply(target, object, args)`：拦截 Proxy 实例作为函数调用的操作，比如`proxy(...args)`、`proxy.call(object, ...args)`、`proxy.apply(...)`。
+13. `construct(target, args)`：拦截 Proxy 实例作为构造函数调用的操作，比如`new proxy(...args)`。
+
+### 11.2 Proxy 实例的方法
+
+如果一个属性不可配置（configurable）且不可写（writable），则 Proxy 不能修改该属性，否则通过 Proxy 对象访问该属性会报错。
+
+`get(target, propKey, receiver)`
+>拦截某个属性的读取操作,接受三个参数，依次为目标对象、属性名和 proxy 实例本身（严格地说，是操作行为所针对的对象），其中最后一个参数可选。
+
+`set(target, propKey, value, receiver)`
+>set方法用来拦截某个属性的赋值操作，可以接受四个参数，依次为目标对象、属性名、属性值和 Proxy 实例本身，其中最后一个参数可选。
+
+### 11.3 `this` 问题
+
+虽然 Proxy 可以代理针对目标对象的访问，但它不是目标对象的透明代理，即不做任何拦截的情况下，也无法保证与目标对象的行为一致。主要原因就是在 Proxy 代理的情况下，目标对象内部的`this`关键字会指向 Proxy 代理。
+
+```js
+const target = {
+  m: function () {
+    console.log(this);
+  }
+};
+const handler = {};
+
+const proxy = new Proxy(target, handler);
+
+target.m() // {m: ƒ}
+proxy.m()  // Proxy {m: ƒ}
+```
+
+可以通过绑定this解决
+
+```js
+const target = new Date('2015-01-01');
+const handler = {
+  get(target, prop) {
+    if (prop === 'getDate') {
+      return target.getDate.bind(target);
+    }
+    return Reflect.get(target, prop);
+  }
+};
+const proxy = new Proxy(target, handler);
+
+proxy.getDate() // 1
+```
+
+## 12 Promise
+
+`Promise`对象有以下两个特点。
+
+1. 对象的状态**不受外界影响**。`Promise`对象代表一个异步操作，有三种状态：`pending`（进行中）、`fulfilled`（已成功）和`rejected`（已失败）。**只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态**。
+2. **一旦状态改变，就不会再变，任何时候都可以得到这个结果**。`Promise`对象的状态改变，只有两种可能：从`pending`变为`fulfilled`和从`pending`变为`rejected`。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果，这时就称为 `resolved`（已定型）。如果改变已经发生了，**你再对`Promise`对象添加回调函数，也会立即得到这个结果**。这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。
+
+Promise也有一些缺点。
+
+- 首先，无法取消Promise，一旦新建它就会立即执行，无法中途取消。
+- 其次，如果不设置回调函数，Promise内部抛出的错误，不会反应到外部。
+- 第三，当处于pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
+
+### 12.1 基本用法
+
+```js
+const promise = new Promise(function(resolve, reject) {
+  // ... some code
+
+  if (/* 异步操作成功 */){
+    resolve(value);
+  } else {
+    reject(error);
+  }
+});
+```
+
+Promise构造函数接受一个函数作为参数，该函数的两个参数分别是`resolve`和`reject`。
+
+- `resolve`函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；
+- `reject`函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。
+
+Promise实例生成以后，可以用`then`方法分别指定resolved状态和rejected状态的回调函数。
+
+下面是异步加载图片的例子。
+
+```js
+function loadImageAsync(url) {
+  return new Promise(function(resolve, reject) {
+    const image = new Image();
+
+    image.onload = function() {
+      resolve(image);
+    };
+
+    image.onerror = function() {
+      reject(new Error('Could not load image at ' + url));
+    };
+
+    image.src = url;
+  });
+}
+```
+
+### 12.2 Promise.prototype.then()
+
+then方法的第一个参数是resolved状态的回调函数，第二个参数（可选）是rejected状态的回调函数。
+
+`then`方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）。**因此可以采用链式写法**，即then方法后面再调用另一个then方法。
+
+指定两个回调函数。第一个回调函数完成以后，会将返回结果作为参数，传入第二个回调函数。
+
+### 12.3 Promise.prototype.catch()
+
+是`.then(null, rejection)`或`.then(undefined, rejection)`的别名，用于指定发生错误时的回调函数。
+
+### 12.4 Promise.prototype.finally()
+
+用于指定不管 `Promise` 对象最后状态如何，都会执行的操作。该方法是 ES2018 引入标准的。
+
+`finally`方法的回调函数不接受任何参数，这意味着没有办法知道，前面的 `Promise` 状态到底是fulfilled还是rejected。这表明，finally方法里面的操作，应该是与状态无关的，不依赖于 `Promise` 的执行结果。
+
+### 12.5 Promise.all()
+
+用于将多个 `Promise` 实例，包装成一个新的 `Promise` 实例。
+
+`Promise.all()`方法的参数可以不是数组，但必须具有 `Iterator` 接口，且返回的每个成员都是 `Promise` 实例。
+
+```js
+const p = Promise.all([p1, p2, p3]);
+```
+
+p的状态由p1、p2、p3决定，分成两种情况。
+
+1. 只有p1、p2、p3的状态都变成fulfilled，p的状态才会变成fulfilled，此时p1、p2、p3的**返回值组成一个数组**，传递给p的回调函数。
+2. 只要p1、p2、p3之中**有一个**被rejected，p的状态就变成rejected，此时**第一个**被reject的实例的返回值，会传递给p的回调函数。
+
+```js
+const p1 = new Promise((resolve, reject) => {
+  resolve('hello');
+})
+.then(result => result)
+.catch(e => e);
+
+const p2 = new Promise((resolve, reject) => {
+  throw new Error('报错了');
+})
+.then(result => result)
+.catch(e => e);
+
+Promise.all([p1, p2])
+.then(result => console.log(result))
+.catch(e => console.log(e));
+// ["hello", Error: 报错了]
+```
+
+上面代码中，`p1`会resolved，`p2`首先会rejected，但是`p2`有自己的catch方法，该方法返回的是一个新的 Promise 实例，`p2`指向的实际上是这个实例。导致`Promise.all()`方法参数里面的两个实例都会resolved
+
+### 12.6 Promise.race()
+
+```js
+const p = Promise.race([p1, p2, p3]);
+```
+
+只要有一个实例率先改变状态，`p`的状态就跟着改变。那个率先改变的 Promise 实例的返回值，就传递给`p`的回调函数。
+
+### 12.7 Promise.resolve()
+
+将现有对象转为 Promise 对象
+
+`Promise.resolve()`等价于下面的写法。
+
+```js
+Promise.resolve('foo')
+// 等价于
+new Promise(resolve => resolve('foo'))
+```
+
+**需要注意的是**，立即`resolve()`的 Promise 对象，是在**本轮**“事件循环”（event loop）的结束时执行，而**不是在下一轮**“事件循环”的开始时。
+
+`Promise.resolve`方法的参数分成四种情况。
+
+**（1）**参数是一个 Promise 实例
+
+如果参数是 Promise 实例，那么Promise.resolve将不做任何修改、原封不动地返回这个实例。
+
+**（2）**参数是一个`thenable`对象
+
+`thenable`对象指的是具有`then`方法的对象，比如下面这个对象。
+
+```js
+let thenable = {
+  then: function(resolve, reject) {
+    resolve(42);
+  }
+};
+```
+
+Promise.resolve方法会将这个对象转为 Promise 对象，然后就立即执行`thenable`对象的`then`方法。
+
+**（3）**参数不是具有then方法的对象，或根本就不是对象
+
+返回一个新的 `Promise` 对象，状态为resolved。
+
+`（4）`不带有任何参数
+
+直接返回一个resolved状态的 Promise 对象。
+
+### 12.8 Promise.reject()
+
+### 12.9 Promise.try()
+
+实际开发中，经常遇到一种情况：不知道或者不想区分，函数f是同步函数还是异步操作，但是想用 Promise 来处理它。因为这样就可以不管f是否包含异步操作，都用then方法指定下一步流程，用catch方法处理f抛出的错误。一般就会采用下面的写法。
+
+```js
+Promise.resolve().then(f)
+```
+
+**缺点**，就是如果f是同步函数，那么它会在本轮事件循环的**末尾**执行。
+
+那么有没有一种方法，让同步函数同步执行，异步函数异步执行，并且让它们具有统一的 API 呢？回答是可以的，并且还有**两种**写法。
+
+第一种写法是用`async`函数来写。
+
+```js
+const f = () => console.log('now');
+(async () => f())();
+console.log('next');
+// now
+// next
+```
+
+第二种写法是使用`new Promise()`。
+
+```js
+const f = () => console.log('now');
+(
+  () => new Promise(
+    resolve => resolve(f())
+  )
+)();
+console.log('next');
+// now
+// next
+```
+
+现在有一个提案，提供`Promise.try`方法替代上面的写法。
