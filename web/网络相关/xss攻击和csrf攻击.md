@@ -58,7 +58,12 @@ XSS的防范措施（encode + 过滤）
 - `/：&#x2F;`
 
 (2) Javascript：把所有非字母、数字的字符都转义成小于256的ASCII字符；
+
 (3)URL：使用Javascript的`encodeURIComponent()`方法对用户的输入进行编码，该方法会编码如下字符：`,      /      ?     :     @     &     =     +     $     #`
+
+(4)利用模板引擎而不是拼接HTML
+
+(5)自动扫描工具寻找潜在的 XSS 漏洞
 
 2、过滤诸如`<script>`、`<img>`、`<a>` 标签
 
