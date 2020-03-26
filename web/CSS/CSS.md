@@ -10,21 +10,21 @@
 
 ## 3 Text(文本)格式
 
-属性|描述
--|-
-color|设置文本颜色
-direction|设置文本方向。
-letter-spacing|设置字符间距
-line-height|设置行高
-text-align|对齐元素中的文本
-text-decoration|向文本添加修饰
-text-indent|缩进元素中文本的首行
-text-shadow|设置文本阴影
-text-transform|控制元素中的字母
-unicode-bidi|设置或返回文本是否被重写 
-vertical-align|设置元素的垂直对齐
-white-space|设置元素中空白的处理方式
-word-spacing|设置字间距
+| 属性            | 描述                     |
+| --------------- | ------------------------ |
+| color           | 设置文本颜色             |
+| direction       | 设置文本方向。           |
+| letter-spacing  | 设置字符间距             |
+| line-height     | 设置行高                 |
+| text-align      | 对齐元素中的文本         |
+| text-decoration | 向文本添加修饰           |
+| text-indent     | 缩进元素中文本的首行     |
+| text-shadow     | 设置文本阴影             |
+| text-transform  | 控制元素中的字母         |
+| unicode-bidi    | 设置或返回文本是否被重写 |
+| vertical-align  | 设置元素的垂直对齐       |
+| white-space     | 设置元素中空白的处理方式 |
+| word-spacing    | 设置字间距               |
 
 ## 4 Fonts(字体)
 
@@ -84,17 +84,29 @@ border:5px solid red;
 
 ## 8 尺寸 (Dimension)
 
-属性|描述
--|-
-height|设置元素的高度。
-line-height|设置行高。
-max-height|设置元素的最大高度。
-max-width|设置元素的最大宽度。
-min-height|设置元素的最小高度。
-min-width|设置元素的最小宽度。
-width|设置元素的宽度
+| 属性        | 描述                 |
+| ----------- | -------------------- |
+| height      | 设置元素的高度。     |
+| line-height | 设置行高。           |
+| max-height  | 设置元素的最大高度。 |
+| max-width   | 设置元素的最大宽度。 |
+| min-height  | 设置元素的最小高度。 |
+| min-width   | 设置元素的最小宽度。 |
+| width       | 设置元素的宽度       |
 
 ## 9 Display(显示) 与 Visibility（可见性）
+
+### 9.1 外边距合并
+
+当两个垂直外边距相遇时，它们将形成一个外边距。
+
+只有普通文档流中块壮元素的垂直外边距才会发生外边距合并。
+
+行内块左右不会合并。
+
+行内块与上下块状不会。
+
+行内框、浮动框或绝对定位之间的外边距不会合并。
 
 ## 10 Position(定位)
 
@@ -138,7 +150,7 @@ iOS里APP右上角的红色圈圈:
 
 ### 10.4 absolute 定位
 
-绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于`<html>`
+绝对定位的元素的位置相对于最近的已定位(`relative`、`absolute`、`fixed`)父元素，如果元素没有已定位的父元素，那么它的位置相对于`<html>`
 
 与文档流无关，因此**不占据空间**。
 
@@ -146,17 +158,23 @@ iOS里APP右上角的红色圈圈:
 
 元素定位表现为在跨越特定阈值前为相对定位(relative)，之后为固定定位(fixed)。
 
+### 10.6 脱离文档流
+
+1. float
+2. absolute
+3. fixed
+
 ## 11 CSS 布局 - Overflow
 
 用于控制内容溢出元素框时显示的方式。
 
-值|描述
--|-
-visible|默认值。内容不会被修剪，会呈现在元素框之外。
-hidden|内容会被修剪，并且其余内容是不可见的。
-scroll|内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
-auto|如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
-inherit|规定应该从父元素继承 overflow 属性的值。
+| 值      | 描述                                                     |
+| ------- | -------------------------------------------------------- |
+| visible | 默认值。内容不会被修剪，会呈现在元素框之外。             |
+| hidden  | 内容会被修剪，并且其余内容是不可见的。                   |
+| scroll  | 内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。 |
+| auto    | 如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。 |
+| inherit | 规定应该从父元素继承 overflow 属性的值。                 |
 
 ## 12 Float(浮动)
 
@@ -185,3 +203,179 @@ clear 属性指定元素两侧不能出现浮动元素。
 `clear:[left,right,both,none,inherit]`
 
 ## 13 CSS 布局 - 水平 & 垂直对齐
+
+### 13.1 居中对齐
+
+#### 13.1.1 元素居中对齐
+
+元素通过**指定宽度**，并将两边的空外边距平均分配
+
+```css
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+```
+
+#### 13.1.2 文本居中对齐
+
+文本在元素内居中对齐，可以使用 `text-align: center;`
+
+#### 13.1.3 图片居中对齐
+
+```css
+img {
+    display: block; /*默认inline-block*/
+    margin: auto;
+    width: 40%;
+}
+```
+
+### 13.2 左右对齐
+
+#### 13.2.1 使用定位方式
+
+```css
+.container {
+    position: relative;
+    width: 100%;
+}
+.right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    background-color: #b0e0e6;
+}
+```
+
+#### 13.2.2 使用 float 方式
+
+```css
+.right {
+    float: right;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+```
+
+### 13.3 垂直居中对齐
+
+#### 13.3.1 使用 padding
+
+实现：上下padding相同，容器不设高度。
+
+缺点：多行会导致容器变大
+
+#### 13.3.2 使用 line-height
+
+设置以百分比计的行高
+
+#### 13.3.3 使用 position 和 transform
+
+```css
+.center {
+    height: 200px;
+    position: relative;
+    border: 3px solid green;
+}
+
+.center p {
+    margin: 0;
+    position: absolute;
+    top: 50%;/*起始位置到中间*/
+    left: 50%;/*起始位置到中间*/
+    transform: translate(-50%, -50%);/*相对自己左移一半，上移一半*/
+}
+```
+
+## 14 组合选择符
+
+后代选择器`div p`
+
+子元素选择器`div>p`
+
+相邻兄弟选择器`div+p`,**只**选择**紧接的下一个**元素，且二者有相同父元素。
+
+普通兄弟选择器`div~p`,选取指定元素**之后的所有相邻兄弟**元素。
+
+## 15 伪类(Pseudo-classes)
+
+CSS伪类是用来添加一些选择器的特殊效果。
+
+伪类选择元素基于的是当前元素处于的状态,动态变化
+
+### 15.1 链接(anchor)伪类
+
+```css
+a:link {color:#FF0000;} /* 未访问的链接 */
+a:visited {color:#00FF00;} /* 已访问的链接 */
+a:hover {color:#FF00FF;} /* 鼠标划过链接 */
+a:active {color:#0000FF;} /* 已选中的链接 */
+```
+
+注意： 在CSS定义中，a:hover 必须被置于 a:link 和 a:visited 之后，才是有效的。
+
+注意： 在 CSS 定义中，a:active 必须被置于 a:hover 之后，才是有效的。
+
+注意：伪类的名称不区分大小写。
+
+### 15.2 :first-child 伪类
+
+选择父元素的第一个子元素
+
+匹配第一个 `<p>` 元素
+
+```css
+p:first-child
+{
+    color:blue;
+}
+```
+
+匹配所有`<p>` 元素中的第一个 `<i>` 元素
+
+```css
+p > i:first-child
+{
+    color:blue;
+}
+```
+
+### 15.3 其他
+
+`div:first-child`
+>属于任意元素的第一个div元素
+
+`div:last-child`
+>属于任意元素的倒数第一个div元素
+
+`div:nth-child(n)`
+>属于任意元素的第n个div元素,没有第0个
+
+`div:nth-last-child(n)`
+>属于任意元素的倒数第n个div元素
+
+## 16 伪元素(pseudo-element)
+
+CSS伪元素是用来添加一些选择器的特殊效果。
+
+伪元素是**对元素中的特定内容**进行操作，它所操作的层次比伪类更深了一层
+
+### 16.1 `:first-line` 伪元素
+
+用于向文本的首行设置特殊样式。
+
+### 16.2 `:first-letter` 伪元素
+
+用于向文本的首字母设置特殊样式
+
+### 16.3 `:before` 伪元素
+
+可以在元素的内容前面插入新内容
+
+### 16.4  `:after` 伪元素
+
+可以在元素的内容之后插入新内容。
