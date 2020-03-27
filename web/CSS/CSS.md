@@ -154,6 +154,17 @@ iOS里APP右上角的红色圈圈:
 
 与文档流无关，因此**不占据空间**。
 
+绝对定位的元素忽略float属性
+
+#### 10.4.1 定位点问题
+
+父级元素`con`为`relative`，子级元素`child`为`absolute`时:
+
+`child`的`top:0;left:0px;`为:
+
+- `child`的`margin`的左上角
+- `con`的`content`的(0,0)
+
 ### 10.5 sticky 定位
 
 元素定位表现为在跨越特定阈值前为相对定位(relative)，之后为固定定位(fixed)。
@@ -189,6 +200,8 @@ CSS 的 Float（浮动），会使元素向左或向右移动，其周围的元�
 浮动元素之前的元素将不会受到影响。
 
 例如：如果图像是右浮动，下面的文本流将环绕在它左边
+
+**绝对定位**的元素忽略float属性
 
 `float:[left,right,none,inherit]`
 
@@ -379,3 +392,155 @@ CSS伪元素是用来添加一些选择器的特殊效果。
 ### 16.4  `:after` 伪元素
 
 可以在元素的内容之后插入新内容。
+
+## 17 导航栏
+
+### 17.1 导航栏=链接列表
+
+导航条基本上是一个链接列表，所以使用 `<ul>` 和 `<li>`元素非常有意义：
+
+```html
+<ul>
+  <li><a href="#home">主页</a></li>
+  <li><a href="#news">新闻</a></li>
+  <li><a href="#contact">联系</a></li>
+  <li><a href="#about">关于</a></li>
+</ul>
+```
+
+### 17.2 首先
+
+删除`margin`,`padding`和设置`list-style-type: none;`
+
+### 17.3 垂直导航栏
+
+在 17.2 的基础上：
+
+```css
+a
+{
+    display:block;
+    width:60px;
+}
+```
+
+显示块元素的链接，**让整体变为可点击链接区域**（不只是文本）
+
+继续优化：
+
+```css
+/*以下为添加的内容*/
+ul {
+    /* list-style-type: none; */
+    /* margin: 0; */
+    /* padding: 0; */
+    /* width: 200px; */
+    background-color: #f1f1f1;
+}
+li a {
+    /* display: block; */
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+.active {
+    /*当前激活的导航条*/
+    background-color: #4CAF50;
+    color: white;
+}
+```
+
+全屏的固定导航条：
+
+```css
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1f1f1;
+    height: 100%; /* 全屏高度 */
+    position: fixed; /*不跟随滚动条移动*/
+    overflow: auto; /* 如果导航栏选项多，允许滚动 */
+}
+```
+
+### 17.4 水平导航栏
+
+有两种方法创建横向导航栏。使用内联(inline)或浮动(float)的列表项。
+
+这两种方法都很好，但如果你想链接到具有相同的大小，你必须使用浮动的方法。
+
+#### 17.4.1 内联列表项
+
+```css
+li
+{
+    display:inline;
+}
+```
+
+#### 17.4.2 浮动列表项
+
+```css
+li
+{
+    float:left;
+}
+a
+{
+    display:block;
+    width:60px;
+}
+```
+
+#### 17.4.3 样式
+
+基本同上
+
+## 18 下拉菜单
+
+1. 菜单整体`position: relative;display: inline-block;`
+2. `dropdown-content`设置`display: none;`
+3. hover时变成block，`.dropdown:hover .dropdown-content {display: block;}`
+
+实例解析
+
+**HTML 部分**：
+
+我们可以使用**任何的 HTML 元素来打开下拉菜单**，如：`<span>`, 或  `<button>` 元素。
+
+使用容器元素 (如： `<div>`) 来创建下拉菜单的内容，并放在任何你想放的位置上。
+
+使用 `<div>` 元素来包裹这些元素，并使用 CSS 来设置下拉内容的样式。
+
+**CSS 部分**：
+
+`.dropdown` 类使用 `position:relative`, 这将设置下拉菜单的内容放置在下拉按钮 (使用 position:absolute) 的右下角位置。
+
+`.dropdown-content` 类中是实际的下拉菜单。默认是隐藏的，在鼠标移动到指定元素后会显示。 注意 `min-width` 的值设置为 `160px`。你可以随意修改它。 注意: 如果你想设置下拉内容与下拉按钮的宽度一致，可设置 `width` 为 100% ( `overflow:auto` 设置可以在小尺寸屏幕上滚动)。
+
+我们使用 `box-shadow` 属性让下拉菜单看起来像一个"卡片"。
+
+`:hover` 选择器用于在用户将鼠标移动到下拉按钮上时显示下拉菜单
+
+## 19 提示工具(Tooltip)
+
+hover时的提示气球
+
+核心：
+
+```css
+.tooltip .tooltiptext {
+visibility: hidden;
+position: absolute;
+z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+```
