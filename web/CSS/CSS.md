@@ -544,3 +544,32 @@ z-index: 1;
     visibility: visible;
 }
 ```
+
+## 20 媒体类型`@media`
+
+## 21 CSS 属性 选择器
+
+```css
+/*把包含标题（title）的所有元素变为蓝色*/
+[title]
+{
+    color:blue;
+}
+```
+
+```css
+/*改变了标题title='runoob'元素的边框样式*/
+[title=runoob]
+{
+    border:5px solid green;
+}
+```
+
+### 21.1 属性和值的选择器 - 多值
+
+```css
+/*title中包含hello的*/
+[title~=hello] { color:blue; }
+/*选择 lang 属性以 en 为开头的所有元素*/
+[lang|=en]
+```
