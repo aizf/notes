@@ -71,3 +71,40 @@ css实现动画：`animation` `transition` `transform`
 在JS执行一些昂贵的任务时，main thread繁忙，CSS动画由于使用了compositor thread可以保持流畅
 
 CSS3开启硬件加速的使用和坑<https://www.jianshu.com/p/9596c82086d5>
+
+## CSS开启硬件加速
+
+```css
+/**原理上还是使用3d效果来开启硬件加速**/
+.speed-up{
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+```
+
+对于safari以及chrome，可能会在使用animation或者transition时**出现闪烁的问题**，可以使用以下的解决方法:
+
+```css
+.speed-up{
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
+    perspective: 1000;
+
+/**webkit上也可以用以下语句  **/
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+```
+
+硬件加速最好只用在animation或者transform上。不要滥用硬件加速，增加了内存的使用，而且它会减少移动端设备的电池寿命。

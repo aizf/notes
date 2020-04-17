@@ -76,7 +76,7 @@ let arr = [...arguments];
 
 ES6:
 
-```JS
+```js
 Function.prototype.call = function(context, ...args) {
     context = context === undefined || context === null ? window : Object(context)
     const fn = Symbol('fn')
