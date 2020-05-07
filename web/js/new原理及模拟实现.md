@@ -43,3 +43,7 @@ function create(Con,...args) {
 
 - `proto` : 必须。**表示新建对象的原型对象**，即该参数会被赋值到目标对象(即新对象，或说是最后返回的对象)的原型上。该参数可以是`null`， 对象， 函数的`prototype`属性 （创建空的对象时需传`null` , 否则会抛出`TypeError`异常）。
 - `propertiesObject` : 可选。 添加到新创建对象的可枚举属性（即其自身的属性，而不是原型链上的枚举属性）对象的属性描述符以及相应的属性名称。这些属性对应`Object.defineProperties()`的第二个参数。
+
+## 注意
+
+箭头函数不能被`new`，因为其没有原型链，因此没有`prototype.constructor`
