@@ -49,3 +49,13 @@ a = 2;
 alert({})
 //"[object Object]"
 ```
+
+### 5 indexOf()
+
+```js
+let a=[1,2,NaN]
+a.indexOf(NaN)  // -1
+a.includes(NaN) // true
+```
+
+`findIndex()`可以传回调,配合JSON.stringify,用于判断对象
