@@ -22,6 +22,12 @@ js实现动画: `setInterval` `setTimeout` `requestAnimationFrame`
 2. 代码**的复杂度高**于CSS动画
 3. 无法保证执行时间。timeout interval存在同步任务优先执行的问题。
 
+### requestAnimationFrame执行时机
+
+跟随浏览器刷新频率
+
+可能在下次宏任务前，也可能在之后
+
 ## CSS动画
 
 css实现动画：`animation` `transition` `transform`
