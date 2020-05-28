@@ -2,4 +2,4 @@
 
 ## 图片
 
-`![avatar](.\res\100864.png)`
+`![avatar](.\res\1.png)`
