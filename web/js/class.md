@@ -2,6 +2,47 @@
 
 ##
 
+## static
+
+相当于将属性或方法添加到构造函数上
+
+例：
+
+```ts
+class A {
+    static b: string = "b"
+    a: string
+    constructor() {
+        this.a = "1"
+    }
+    getA() {
+        return this.a
+    }
+    static getB() {
+        return this.b
+    }
+}
+```
+
+转化为js：
+
+```js
+"use strict";
+var A = /** @class */ (function () {
+    function A() {
+        this.a = "1";
+    }
+    A.prototype.getA = function () {
+        return this.a;
+    };
+    A.getB = function () {
+        return this.b;
+    };
+    A.b = "b";
+    return A;
+}());
+```
+
 ## super
 
 ### 当做函数使用

@@ -2,6 +2,8 @@
 
 AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。
 
+XMLHttpRequest 可以用于获取任何类型的数据，而不仅仅是 XML。它甚至支持 HTTP 以外的协议（包括 file:// 和 FTP），尽管可能受到更多出于安全等原因的限制。
+
 ## 1 创建 XMLHttpRequest 对象
 
 XMLHttpRequest 是 AJAX 的基础,XMLHttpRequest 对象用于和服务器交换数据。
@@ -108,3 +110,15 @@ request.onreadystatechange = function () { // 状态发生变化时，函数被�
 request.open('GET', '/api/categories');
 request.send();
 ```
+
+## 事件
+
+| -         | -                                                                                             |
+| --------- | --------------------------------------------------------------------------------------------- |
+| abort     | 当 request 被停止时触发，例如当程序调用 XMLHttpRequest.abort() 时。也可以使用 onabort 属性。  |
+| error     | 当 request 遭遇错误时触发。也可以使用 onerror 属性                                            |
+| load      | XMLHttpRequest请求成功完成时触发。也可以使用 onload 属性.                                     |
+| loadend   | 当请求结束时触发, 无论请求成功 ( load) 还是失败 (abort 或 error)。也可以使用 onloadend 属性。 |
+| loadstart | 接收到响应数据时触发。也可以使用 onloadstart 属性。                                           |
+| progress  | 当请求接收到更多数据时，周期性地触发。也可以使用 onprogress 属性。                            |
+| timeout   | 在预设时间内没有接收到响应时触发。也可以使用 ontimeout 属性。                                 |

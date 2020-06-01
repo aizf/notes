@@ -1,8 +1,29 @@
 #
 
-## 选择父子，兄弟等
+<https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents>
 
 <https://www.cnblogs.com/ilovexiaoming/p/6853176.html>
+
+## 移动和删除元素
+
+```js
+sect.appendChild(linkPara);
+sect.removeChild(linkPara);
+linkPara.parentNode.removeChild(linkPara);
+```
+
+## 操作样式
+
+**注意**: CSS样式的JavaSript属性版本以小驼峰式命名法书写，而CSS版本带连接符号（backgroundColor 对 background-color）。
+
+```js
+para.style.backgroundColor = 'black';
+
+para.setAttribute('class', 'highlight');
+para.className
+```
+
+## 选择父子，兄弟等
 
 ```js
 var test = document.getElementById("test");

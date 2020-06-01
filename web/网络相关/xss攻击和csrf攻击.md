@@ -4,6 +4,10 @@
 
 原理：转发Cookie
 
+每个 Cookie 都会有与之关联的域，这个域的范围一般通过 donmain 属性指定。
+
+如果 Cookie 的域和页面的域相同，那么我们称这个 Cookie 为第一方 Cookie（first-party cookie），如果 Cookie 的域和页面的域不同，则称之为第三方 Cookie（third-party cookie）。
+
 ### 1.1 如何防御
 
 #### 方法一：Token 验证：（用的最多）
