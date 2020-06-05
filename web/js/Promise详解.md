@@ -57,6 +57,12 @@ Promise 是异步编程的一种解决方案
 `Promise.all(iterable)`
 >所有的promise对象都成功的时候才会触发成功，一旦有任何一个iterable里面的promise对象失败则立即触发该promise对象的失败。
 
+## 注意点
+
+1. `Promise`内`resolve`或`reject`后错误将静默执行，且之后内容不再执行
+2. `Promise`内`resolve`或`reject`之前发生错误，`Promise.prototype.catch(onRejected)`的`onRejected`为错误
+3. 在未发生的情况下，`new Promise`内`resolve`后的内容也会执行
+
 ## 手写(未完)
 
 ```js

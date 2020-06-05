@@ -111,6 +111,11 @@ request.open('GET', '/api/categories');
 request.send();
 ```
 
+## API
+
+`xhr.abort()`
+>取消
+
 ## 事件
 
 | -         | -                                                                                             |
