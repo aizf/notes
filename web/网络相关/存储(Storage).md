@@ -1,5 +1,7 @@
 #
 
+<https://juejin.im/post/5ed9c9ea51882542f346fd49>
+
 ## 1 Cookies
 
 `document.cookie`
@@ -69,13 +71,14 @@ Token 是在服务端产生的。如果前端使用用户名/密码向服务端�
 
 ### 2.1 sessionStorage
 
-容量大小约为5M左右,该方式的生命周期为**关闭浏览器窗口**为止
+- 容量大小约为5M左右,该方式的生命周期为**关闭浏览器窗口**为止
+- 同源的同窗口,即使刷新页面或进入同源另一页面，数据仍然存在。
 
 实质上是保存在session对象
 
 ### 2.2 localStorage
 
-- 容量大小约为20M左右
+- 容量大小约为20M左右,可以用多个iframe方式使用多个域名来突破限制
 - 存储的数据不会随着用户浏览时会话过期而过期
 - 但会应用户的请求而删除
 - 浏览器也因为存储空间的限制或安全原因删除它们
@@ -85,10 +88,11 @@ Token 是在服务端产生的。如果前端使用用户名/密码向服务端�
 
 ### 2.3 方法详解
 
-- `setItem(key, value)` 设置存储内容
+- `setItem(key, value)` 设置存储内容,注意[错误处理](https://iammapping.com/the-other-ways-to-use-localstorage/)
 - `getItem(key)` 读取存储内容
 - `removeItem(key)` 删除键值为key的存储内容
 - `clear()` 清空所有存储内容
+- `window.addEventListener('storage', callback)`响应变化
 
 一旦键名设置成功，则不允许修改，也不能重复，若重复，会覆盖原有的键名值
 

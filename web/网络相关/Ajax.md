@@ -113,8 +113,35 @@ request.send();
 
 ## API
 
+`xhr.onreadystatechange`
+>当 readyState 属性发生变化时
+
+`readyState`
+>无符号短整型（unsigned short）数字，代表请求的状态码(0,1,2,3,4)
+
+`xhr.response`
+>整个响应实体
+
+`xhr.responseText`
+>返回一个 DOMString，该 DOMString 包含对请求的响应，如果请求未成功或尚未发送，则返回 null。
+
+`xhr.status`
+>一个无符号短整型（unsigned short）数字，代表请求的响应状态
+
+`xhr.withCredentials`
+>用来指定跨域 Access-Control 请求是否应当带有授权信息，如 cookie 或授权 header 头。
+
+`xhr.open(method, url[, async])`
+>初始化一个请求
+
+`xhr.setRequestHeader(header, value)`
+>设置 HTTP 请求头的值。必须在 open() 之后、send() 之前
+
+`xhr.send()`
+>接受一个可选的参数，其作为请求主体；如果请求方法是 GET 或者 HEAD，则应将请求主体设置为 null。
+
 `xhr.abort()`
->取消
+>取消,当一个请求被终止，它的 readyState 属性将被置为0
 
 ## 事件
 
