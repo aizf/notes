@@ -39,3 +39,8 @@ var o = new C();
 instance_of(o, C); // true
 instance_of(o, D); // false
 ```
+
+## isPrototypeOf和instanceof区别
+
+- A.isPrototypeOf(B) 判断的是A对象是否存在于B对象的原型链之中
+- A instanceof B  判断的是B.prototype是否存在与A的原型链之中

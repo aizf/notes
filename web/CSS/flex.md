@@ -2,11 +2,11 @@
 
 ## 容器
 
-- flex-direction,主轴的方向,(row | row-reverse | column | column-reverse)
+- flex-direction,主轴的方向,(row(默认) | row-reverse | column | column-reverse)
 - flex-wrap,如何换行,[nowrap（默认）不换行。 | wrap换行向下 | wrap-reverse换行向上]
 - flex-flow，flex-direction属性和flex-wrap属性的简写，默认值为row nowrap
-- justify-content，在主轴上的对齐方式(水平)，flex-start | flex-end | center | space-between | space-around;
-- align-items，在交叉轴上如何对齐，flex-start | flex-end | center | baseline | stretch;
+- justify-content，在主轴上的对齐方式(水平)，flex-start(默认) | flex-end | center | space-between | space-around;
+- align-items，在交叉轴上如何对齐，flex-start | flex-end | center | baseline | stretch(默认);
 - align-content，定义了多根轴线的对齐方式
 
 ## item
