@@ -8,6 +8,13 @@ fun.call(thisArg, arg1, arg2, ...)
 
 非严格模式下，则指定为null和undefined的this值会自动指向全局对象(浏览器中就是window对象)，同时值为原始值(数字，字符串，布尔值)的this自动用 Object() 转换
 
+apply从 ECMAScript 第5版开始，可以使用任何种类的**类数组对象**
+
+```js
+Array.apply(null, { 'length': 3, '0': 'eat', '1': 'bananas' })
+// ["eat", "bananas", undefined]
+```
+
 ## 使用场景
 
 ### 1、合并两个数组
