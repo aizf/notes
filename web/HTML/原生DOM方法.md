@@ -55,3 +55,19 @@ var btn=document.createElement("BUTTON");
 在 HTML 文档上调用 `createElement()` 方法创建元素之前会将tagName 转化成小写，在 Firefox、Opera 和 Chrome 内核中，`createElement(null)` 等同于 `createElement("null")`
 
 options可选
+
+## insertBefore()
+
+`var insertedNode = parentNode.insertBefore(newNode, referenceNode);`
+
+- `insertedNode` 被插入节点(newNode)
+- `parentNode` 新插入节点的**父节点**
+- `newNode` 用于插入的节点
+- `referenceNode` `newNode` 将要插在这个节点之前
+
+如果 `referenceNode` 为 `null` 则 `newNode` 将被插入到子节点的末尾。
+
+```js
+newNode === insertedNode
+// true
+```
