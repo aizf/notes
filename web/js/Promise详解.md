@@ -63,6 +63,16 @@ Promise 是异步编程的一种解决方案
 2. `Promise`内`resolve`或`reject`之前发生错误，`Promise.prototype.catch(onRejected)`的`onRejected`为错误
 3. 在未发生的情况下，`new Promise`内`resolve`后的内容也会执行
 
+## unhandledrejection
+
+当`Promise` 被 `reject` 且没有 `reject` 处理器的时候，会触发 `unhandledrejection` 事件
+
+```js
+window.addEventListener("unhandledrejection", event => {
+  console.warn(`UNHANDLED PROMISE REJECTION: ${event.reason}`);
+});
+```
+
 ## 手写(未完)
 
 ```js
