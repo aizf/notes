@@ -1,4 +1,9 @@
-#
+---
+title: instanceof 原理及实现
+tags:
+    - js
+    - 模拟
+---
 
 `instanceof` 运算符用来检测 `constructor.prototype` 是否存在于参数 `object` 的原型链上。
 

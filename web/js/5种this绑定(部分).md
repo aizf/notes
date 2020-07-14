@@ -1,4 +1,9 @@
-#
+---
+title: this的绑定规则
+tags:
+    - js
+    - this
+---
 
 this的绑定规则总共有下面5种。
 

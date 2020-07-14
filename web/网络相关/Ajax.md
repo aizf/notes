@@ -1,4 +1,9 @@
-# AJAX(Asynchronous JavaScript and XML)
+---
+title: AJAX(Asynchronous JavaScript and XML)简介
+tags:
+    - http
+    - ajax
+---
 
 AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。
 

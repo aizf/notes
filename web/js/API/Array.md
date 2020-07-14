@@ -1,4 +1,9 @@
-#
+---
+title: js Array
+tags:
+    - js
+    - cheatsheet
+---
 
 <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray>
 

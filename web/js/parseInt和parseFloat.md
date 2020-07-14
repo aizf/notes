@@ -1,4 +1,8 @@
-# parseInt和parseFloat
+---
+title: parseInt和parseFloat
+tags:
+    - js
+---
 
 ## 用法
 

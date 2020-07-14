@@ -1,4 +1,8 @@
-#
+---
+title: webpack loader
+tags:
+    - webpack
+---
 
 - loader 用于对模块的源代码进行转换。loader 可以使你在 import 或"加载"模块时预处理文件。
 - loader 可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联图像转换为 data URL。

@@ -1,3 +1,9 @@
+---
+title: Shadow DOM
+tags:
+    - html
+---
+
 <https://aotu.io/notes/2016/06/24/Shadow-DOM/?o2src=juejin&o2layout=compat>
 
 ## 待整理

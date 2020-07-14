@@ -1,6 +1,8 @@
- #
+---
+layout: false
+---
  
- Google于2017年6月发布在arxiv上的一篇文章《Attention is all you need》，提出解决sequence to sequence问题的transformer模型，用全attention的结构代替了lstm，抛弃了之前传统的encoder-decoder模型必须结合cnn或者rnn的固有模式，只用attention，可谓大道至简。
+Google于2017年6月发布在arxiv上的一篇文章《Attention is all you need》，提出解决sequence to sequence问题的transformer模型，用全attention的结构代替了lstm，抛弃了之前传统的encoder-decoder模型必须结合cnn或者rnn的固有模式，只用attention，可谓大道至简。
 
 RNN相关算法只能从左向右依次计算或者从右向左依次计算，这种机制带来了两个问题：
 

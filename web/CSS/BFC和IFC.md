@@ -1,3 +1,10 @@
+---
+title: BFC和IFC
+tags:
+    - css
+    - bfc
+---
+
 ## BFC块格式化上下文（Block Formatting Context，BFC）
 
 - BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之亦然；

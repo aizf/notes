@@ -1,4 +1,8 @@
-# postMessage和onmessage
+---
+title: postMessage和onmessage
+tags:
+    - html
+---
 
 postMessage和onmessage是HTML5的方法，用来解决跨页面通信，或者通过iframe嵌套的不同页面的通信的。
 

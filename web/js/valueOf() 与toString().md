@@ -1,4 +1,8 @@
-#
+---
+title: valueOf() 与 toString()
+tags:
+    - js
+---
 
 ## 计算，比较时
 

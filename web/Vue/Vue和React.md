@@ -1,4 +1,9 @@
-#
+---
+title: Vue和React对比
+tags:
+    - vue
+    - react
+---
 
 ## 响应式更新对比
 

@@ -1,4 +1,8 @@
-#
+---
+title: webpack target
+tags:
+    - webpack
+---
 
 因为服务器和浏览器代码都可以用 JavaScript 编写，所以 webpack 提供了多种构建目标(target)，你可以在你的 webpack 配置中设置。
 

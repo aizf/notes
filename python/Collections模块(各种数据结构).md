@@ -1,4 +1,9 @@
-# Collections
+---
+title: python的Collections模块
+tags:
+    - python
+    - 模块
+---
 
 ```python
 >>> import collections

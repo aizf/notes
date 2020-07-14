@@ -1,3 +1,10 @@
+---
+title: python的logging模块
+tags:
+    - python
+    - 模块
+---
+
 python的logging模块提供了标准的日志接口，可以通过它存储各种格式的日志，日志级别等级:critical > error > warning > info > debug
 
 ![avatar](.\res\100864.png)

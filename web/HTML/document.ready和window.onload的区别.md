@@ -1,4 +1,8 @@
-# document.ready和window.onload的区别
+---
+title: document.ready和window.onload的区别
+tags:
+    - html
+---
 
 都是在都是在页面加载完执行的函数
 

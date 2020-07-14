@@ -1,6 +1,9 @@
-#
-
-##
+---
+title: js class
+tags:
+    - js
+    - 模拟
+---
 
 ## static
 

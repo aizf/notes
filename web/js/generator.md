@@ -1,4 +1,8 @@
-#
+---
+title: generator（生成器）
+tags:
+    - js
+---
 
 `generator`（生成器）是ES6标准引入的新的数据类型。一个`generator`看上去像一个函数，但可以返回多次。
 

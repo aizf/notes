@@ -1,4 +1,8 @@
-# Url的构成
+---
+title: Url的构成
+tags:
+    - url
+---
 
 URL（Uniform Resource Locator,统一资源定位符），用于定位网络上的资源，每一个信息资源都有统一的且在网上唯一的地址。
 

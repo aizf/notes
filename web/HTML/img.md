@@ -1,4 +1,8 @@
-#
+---
+title: img标签相关
+tags:
+    - html
+---
 
 <https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img>
 

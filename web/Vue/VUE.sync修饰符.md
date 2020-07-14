@@ -1,4 +1,8 @@
-#
+---
+title: VUE.sync修饰符
+tags:
+    - vue
+---
 
 `Vue2.3.0` 新增
 

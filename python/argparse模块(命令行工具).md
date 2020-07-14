@@ -1,4 +1,9 @@
-# argparse
+---
+title: argparse模块(命令行工具)
+tags:
+    - python
+    - 模块
+---
 
 ## 1 定义
 
@@ -11,7 +16,7 @@ argparse是python**标准库**里面用来**处理命令行参数**的库
 - **位置参数**就是程序根据该参数出现的位置来确定的,如：ls root/    ,其中root/是位置参数
 - **选项参数**是应用程序已经提前定义好的参数，不是随意指定的,如：ls -l , -l 就是ls命令里的一个选项参数
 
-## 3、使用步骤：
+## 3 使用步骤
 
 ```py
 (1)import argparse    首先导入模块
@@ -41,7 +46,7 @@ conflict_handler='error',     - 定义两个add_argument中添加的选项名字
 add_help=True    - 是否增加-h/--help选项，默认是True)
 ```
 
-## 5 add_argument()方法参数须知：
+## 5 add_argument()方法参数须知
 
 ```py
 name or flags...    - 必选，指定参数的形式，一般写两个，一个短参数，一个长参数

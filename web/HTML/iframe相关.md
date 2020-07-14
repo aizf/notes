@@ -1,4 +1,8 @@
-#
+---
+title: iframe相关
+tags:
+    - html
+---
 
 把iframe解释成“浏览器中的浏览器“是很恰当的。iframe可以嵌在网页中的任意部分。
 

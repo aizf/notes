@@ -1,3 +1,10 @@
+---
+title: docker 命令
+tags:
+    - docker
+    - cheatsheet
+---
+
 ## 容器生命周期管理
 * run 创建一个新的容器并运行一个命令
 * rm 删除不需要的容器
@@ -51,4 +58,3 @@
 ## info|version
 - info : 显示 Docker 系统信息，包括镜像和容器数
 - version :显示 Docker 版本信息
-

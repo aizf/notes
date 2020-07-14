@@ -1,4 +1,8 @@
-#
+---
+title: 变量带不带var
+tags:
+    - js
+---
 
 -|带var|不带var
 -|-|-

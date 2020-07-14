@@ -1,4 +1,13 @@
-# 常用
+---
+title: cmd常用指令
+date: 2019/8/21
+tags:
+    - cmd
+    - bash
+    - shell    
+---
+
+# 
 
 ## 1 空行
 

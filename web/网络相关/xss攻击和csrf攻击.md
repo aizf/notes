@@ -1,4 +1,10 @@
-#
+---
+title: xss攻击和csrf攻击
+tags:
+    - http
+    - xss
+    - csrf
+---
 
 <https://github.com/dwqs/blog/issues/68>
 

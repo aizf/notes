@@ -1,4 +1,9 @@
-#
+---
+title: ImageData 对象
+tags:
+    - html
+    - canvas
+---
 
 ImageData对象中存储着canvas对象真实的像素数据，它包含以下几个只读属性：
 

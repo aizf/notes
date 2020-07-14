@@ -1,4 +1,8 @@
-#
+---
+title: webpack entry
+tags:
+    - webpack
+---
 
 ## 单个入口（简写）语法
 

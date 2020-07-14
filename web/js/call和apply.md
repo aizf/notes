@@ -1,4 +1,9 @@
-#
+---
+title: call和apply
+tags:
+    - js
+    - 模拟
+---
 
 call() 和 apply()的区别在于，call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含多个参数的数组
 

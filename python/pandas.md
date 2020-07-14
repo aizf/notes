@@ -1,6 +1,11 @@
-#
+---
+title: python的pandas模块
+tags:
+    - python
+    - 模块
+---
 
-##
+## iloc
 
 ```py
 df["col"].iloc[0]=122133

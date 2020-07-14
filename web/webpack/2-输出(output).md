@@ -1,4 +1,8 @@
-#
+---
+title: webpack output
+tags:
+    - webpack
+---
 
 配置 output 选项可以控制 webpack 如何向硬盘写入编译文件。注意，即使可以存在多个入口起点，但只指定一个输出配置。
 

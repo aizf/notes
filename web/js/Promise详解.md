@@ -1,4 +1,9 @@
-#
+---
+title: Promise详解
+tags:
+    - js
+    - 模拟
+---
 
 ```js
 const promise1 = new Promise((resolve, reject) => {

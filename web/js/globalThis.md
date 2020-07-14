@@ -1,4 +1,8 @@
-#
+---
+title: globalThis对象
+tags:
+    - js
+---
 
 <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/globalThis>
 

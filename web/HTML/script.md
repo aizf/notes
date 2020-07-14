@@ -1,4 +1,8 @@
-#
+---
+title: script
+tags:
+    - html
+---
 
 ## async defer
 

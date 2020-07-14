@@ -1,3 +1,7 @@
+---
+layout: false
+---
+
 # TensorBoard:可视化学习
 为了更方便 TensorFlow 程序的理解、调试与优化,可以用 TensorBoard 来展现你的 TensorFlow 图像，绘制图像生成的定量指标图以及附加数据。
 
