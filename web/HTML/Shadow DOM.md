@@ -3,6 +3,7 @@ title: Shadow DOM
 tags:
     - html
 ---
+[1]:http://qdgd8wb46.bkt.clouddn.com/md/html_1.jpg
 
 <https://aotu.io/notes/2016/06/24/Shadow-DOM/?o2src=juejin&o2layout=compat>
 
@@ -20,7 +21,7 @@ Shadow DOM它允许在文档（document）渲染时插入一棵DOM元素子树�
 
 在浏览器chrome中打开，然后打开 Chrome 的开发者工具，点击右上角的“Settings”按钮，勾选“Show user agent shadow DOM”。
 
-![avatar](.\res\1.png)
+![avatar][1]
 
 `#shadow-root`称为影子根
 

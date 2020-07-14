@@ -4,6 +4,7 @@ tags:
     - http
     - https
 ---
+[1]:http://qdgd8wb46.bkt.clouddn.com/md/1.jpg
 
 ><https://zhuanlan.zhihu.com/p/112010468?utm_source=wechat_session&utm_medium=social&utm_oi=760863794850197504>
 
@@ -358,4 +359,4 @@ HTTP/2 协议是基于 HTTPS 的，所以 HTTP/2 的安全性也是有保障的�
 
 ### 7.3 图解
 
-![avatar](.\res\1.jpg)
+![avatar][1]

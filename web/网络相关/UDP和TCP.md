@@ -4,6 +4,7 @@ tags:
     - tcp
     - udp
 ---
+[1]:http://qdgd8wb46.bkt.clouddn.com/md/2.webp
 
 <https://zhuanlan.zhihu.com/p/108822858?utm_source=wechat_session&utm_medium=social&utm_oi=760863794850197504>
 
@@ -42,7 +43,7 @@ TCP 的 6 种标识:
 
 ## 3 TCP 的三次握手
 
-![avatar](.\res\2.webp)
+![avatar][1]
 
 TCP 是一种面向连接的单播协议，在发送数据前，通信双方必须在彼此间建立一条连接。**所谓的“连接”，其实是客户端和服务器的内存里保存的一份关于对方的信息，如 IP 地址、端口号等**。
 

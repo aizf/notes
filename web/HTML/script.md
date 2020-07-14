@@ -3,6 +3,7 @@ title: script
 tags:
     - html
 ---
+[1]:http://qdgd8wb46.bkt.clouddn.com/md/html_2.webp
 
 ## async defer
 
@@ -10,4 +11,4 @@ tags:
 - async，异步加载，加载后立即执行
 - defer,异步加载，所有元素解析完成之后，DOMContentLoaded 事件触发之前执行
 
-![avatar](./res/2.webp)
+![avatar][1]
