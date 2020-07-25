@@ -4,11 +4,11 @@ tags:
     - python
     - 模块
 ---
-[100864]:http://qdgd8wb46.bkt.clouddn.com/md/100864.png
+[1]:http://pic.aizf.ink/md/py/1.png
 
 python的logging模块提供了标准的日志接口，可以通过它存储各种格式的日志，日志级别等级:critical > error > warning > info > debug
 
-![avatar][100864]
+![avatar][1]
 
 默认情况下只显示了大于等于WARNING级别的日志。
 

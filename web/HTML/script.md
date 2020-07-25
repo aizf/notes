@@ -3,7 +3,7 @@ title: script
 tags:
     - html
 ---
-[1]:http://qdgd8wb46.bkt.clouddn.com/md/html_2.webp
+[1]:http://pic.aizf.ink/md/html/2.webp
 
 ## async defer
 

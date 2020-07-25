@@ -4,7 +4,7 @@ tags:
     - http
     - https
 ---
-[1]:http://qdgd8wb46.bkt.clouddn.com/md/1.jpg
+[1]:http://pic.aizf.ink/md/http/1.jpg
 
 ><https://zhuanlan.zhihu.com/p/112010468?utm_source=wechat_session&utm_medium=social&utm_oi=760863794850197504>
 

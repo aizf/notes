@@ -4,7 +4,7 @@ tags:
     - tcp
     - udp
 ---
-[1]:http://qdgd8wb46.bkt.clouddn.com/md/2.webp
+[1]:http://pic.aizf.ink/md/http/2.webp
 
 <https://zhuanlan.zhihu.com/p/108822858?utm_source=wechat_session&utm_medium=social&utm_oi=760863794850197504>
 

@@ -3,7 +3,7 @@ title: Shadow DOM
 tags:
     - html
 ---
-[1]:http://qdgd8wb46.bkt.clouddn.com/md/html_1.jpg
+[1]:http://pic.aizf.ink/md/html/1.jpg
 
 <https://aotu.io/notes/2016/06/24/Shadow-DOM/?o2src=juejin&o2layout=compat>
 
