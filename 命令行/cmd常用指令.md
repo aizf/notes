@@ -57,3 +57,15 @@ echo %a%
 ## 6 `&`
 
 一般而言，`&`表示两条命令或语句同时执行的意思。如 `echo a&echo b`
+
+## 7 授予用户权限
+
+通过`icacls`，详情可通过在cmd中输入`icacls`查看
+
+```shell
+# 授予用户`test`读，写和执行权限:
+icacls file /grant test:M
+
+# 删除授予的所有权限：
+icacls file /remove[:g] test
+```
