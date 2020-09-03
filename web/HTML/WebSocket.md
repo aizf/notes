@@ -8,6 +8,8 @@ tags:
 
 WebSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议
 
+[WebSocket原理](https://www.zhihu.com/question/20215561)
+
 允许服务端主动向客户端推送数据。
 
 在 WebSocket API 中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。
